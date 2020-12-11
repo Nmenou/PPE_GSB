@@ -1,12 +1,12 @@
 -- -----------------------------------------------------------------------------
 --             Génération d'une base de données pour
 --                      Oracle Version 10g
---                        (11/12/2020 10:53:50)
+--                        (11/12/2020 17:47:51)
 -- -----------------------------------------------------------------------------
---      Nom de la base : MLR1
+--      Nom de la base : gsb_project
 --      Projet : Espace de travail
---      Auteur : Le Stanc Quentin
---      Date de dernière modification : 11/12/2020 10:53:40
+--      Auteur : Menou Nathan, Le Stanc Quentin
+--      Date de dernière modification : 11/12/2020 17:47:38
 -- -----------------------------------------------------------------------------
 
 DROP TABLE RÉUNION CASCADE CONSTRAINTS;
@@ -64,8 +64,7 @@ CREATE TABLE COMPTE_RENDU_VISITE
    (
     ID_VISITE INTEGER  NOT NULL,
     ID_COLLA INTEGER  NOT NULL,
-    DATE_VISITE DATE  NULL,
-    COÛT_VISITE VARCHAR(60)  NULL
+    DATE_VISITE DATE  NULL
 ,   CONSTRAINT PK_COMPTE_RENDU_VISITE PRIMARY KEY (ID_VISITE)  
    ) ;
 
@@ -86,7 +85,6 @@ CREATE TABLE VISITEUR
     ID_VIS INTEGER  NOT NULL,
     ID_COLLA INTEGER  NOT NULL,
     LIBELLE VARCHAR(60)  NULL,
-    PRIME_VIS SINGLE  NULL,
     BUDGET_VIS SINGLE  NULL,
     NOM_COLLA VARCHAR(60)  NULL,
     PRENOM_COLLA VARCHAR(60)  NULL,
@@ -115,7 +113,8 @@ CREATE TABLE MÉDICAMENT
    (
     ID_MEDICAMENT INTEGER  NOT NULL,
     NOM_MEDICAMENT VARCHAR(60)  NULL,
-    NB_MEDICAMENT INTEGER  NULL
+    NB_MEDICAMENT INTEGER  NULL,
+    COÛT_MÉDICAMENT SINGLE  NULL
 ,   CONSTRAINT PK_MÉDICAMENT PRIMARY KEY (ID_MEDICAMENT)  
    ) ;
 
