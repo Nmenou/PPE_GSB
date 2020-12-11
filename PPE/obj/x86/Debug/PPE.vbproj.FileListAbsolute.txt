@@ -1,0 +1,11 @@
+C:\Users\19nmenou\Documents\Visual Studio 2010\Projects\collection\PPE\PPE\bin\Debug\PPE.exe
+C:\Users\19nmenou\Documents\Visual Studio 2010\Projects\collection\PPE\PPE\bin\Debug\PPE.pdb
+C:\Users\19nmenou\Documents\Visual Studio 2010\Projects\collection\PPE\PPE\bin\Debug\PPE.xml
+C:\Users\19nmenou\Documents\Visual Studio 2010\Projects\collection\PPE\PPE\obj\x86\Debug\PPE.Resources.resources
+C:\Users\19nmenou\Documents\Visual Studio 2010\Projects\collection\PPE\PPE\obj\x86\Debug\PPE.vbproj.GenerateResource.Cache
+C:\Users\19nmenou\Documents\Visual Studio 2010\Projects\collection\PPE\PPE\obj\x86\Debug\PPE.exe
+C:\Users\19nmenou\Documents\Visual Studio 2010\Projects\collection\PPE\PPE\obj\x86\Debug\PPE.xml
+C:\Users\19nmenou\Documents\Visual Studio 2010\Projects\collection\PPE\PPE\obj\x86\Debug\PPE.pdb
+C:\Users\19nmenou\Documents\Visual Studio 2010\Projects\collection\PPE\PPE\obj\x86\Debug\PPE.index.resources
+C:\Users\19nmenou\Documents\Visual Studio 2010\Projects\collection\PPE\PPE\obj\x86\Debug\PPE.rapports_visite.resources
+C:\Users\19nmenou\Documents\Visual Studio 2010\Projects\collection\PPE\PPE\obj\x86\Debug\PPE.liste_medicaments.resources
