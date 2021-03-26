@@ -1,15 +1,42 @@
 ﻿Public Class rapports_visite
 
 
+    Dim myConnection As New Odbc.OdbcConnection
+    Dim myCommand As New Odbc.OdbcCommand
+    Dim myReader As Odbc.OdbcDataReader
+    Dim myAdapter As Odbc.OdbcDataAdapter
+    Dim myBuilder As Odbc.OdbcCommandBuilder
+    Dim connString As String
+    Dim donnee As DataTable
 
-  
     'Text principal
 
-    Private Sub Label2_Click(sender As System.Object, e As System.EventArgs) Handles label_visite.Click
+    Private Sub Label2_Click(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+
+
+        'connString = "Driver={Microsoft ODBC for Oracle};CONNECTSTRING=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.0.23.80)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=ORCL)));Uid=MESGUEN3;Pwd=Estran;"
+        'SERVEUR DE TEST
+        'connString = "Driver={Microsoft ODBC for Oracle};CONNECTSTRING=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.0.220.100)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=ORAPROF)));Uid=SCOTT;Pwd=tiger;"
+        ''connString = "DSN=Test10;Uid=SCOTT;Pwd=tiger;"
+        connString = "DSN=CNXORA15;Uid=system;Pwd=estran;"
+        'connString = "DSN=FERME;Uid=SCOTT;Pwd=tiger;"
+
+        myConnection.ConnectionString = connString
+
+
+
+        Try
+            myConnection.Open()
+            MessageBox.Show("Connexion Oracle Réussie")
+        Catch ex As Odbc.OdbcException
+            MessageBox.Show(ex.Message)
+        End Try
+
+
 
     End Sub
 
-    
+
 
 
     ' Text echanntillon données
