@@ -1,12 +1,12 @@
 -- -----------------------------------------------------------------------------
 --             Génération d'une base de données pour
 --                      Oracle Version 10g
---                        (11/12/2020 17:47:51)
+--                        (11/12/2020 10:53:50)
 -- -----------------------------------------------------------------------------
---      Nom de la base : gsb_project
+--      Nom de la base : MLR1
 --      Projet : Espace de travail
---      Auteur : Menou Nathan, Le Stanc Quentin
---      Date de dernière modification : 11/12/2020 17:47:38
+--      Auteur : Le Stanc Quentin
+--      Date de dernière modification : 11/12/2020 10:53:40
 -- -----------------------------------------------------------------------------
 
 DROP TABLE RÉUNION CASCADE CONSTRAINTS;
@@ -30,13 +30,17 @@ DROP TABLE DÉPEND_DE CASCADE CONSTRAINTS;
 DROP TABLE OFFRIR CASCADE CONSTRAINTS;
 
 -- -----------------------------------------------------------------------------
+
 --       CREATION DE LA BASE 
+
 -- -----------------------------------------------------------------------------
 
 CREATE DATABASE MLR1;
 
 -- -----------------------------------------------------------------------------
+
 --       TABLE : RÉUNION
+
 -- -----------------------------------------------------------------------------
 
 CREATE TABLE RÉUNION
@@ -44,12 +48,14 @@ CREATE TABLE RÉUNION
     ID_RÉUNION INTEGER  NOT NULL,
     ID_DEL INTEGER  NOT NULL,
     PBRENCONTRÉS_RÉUNION VARCHAR(255)  NULL,
-    BILAN_MENSUEL VARCHAR(255)  NULL
+    BILAN_MENSUEL VARCHAR(255)  NULL 
 ,   CONSTRAINT PK_RÉUNION PRIMARY KEY (ID_RÉUNION)  
    ) ;
 
 -- -----------------------------------------------------------------------------
+
 --       INDEX DE LA TABLE RÉUNION
+
 -- -----------------------------------------------------------------------------
 
 CREATE  INDEX I_FK_RÉUNION_DÉLÉGUÉ_RÉGIONAL
@@ -57,19 +63,24 @@ CREATE  INDEX I_FK_RÉUNION_DÉLÉGUÉ_RÉGIONAL
     ;
 
 -- -----------------------------------------------------------------------------
+
 --       TABLE : COMPTE_RENDU_VISITE
+
 -- -----------------------------------------------------------------------------
 
 CREATE TABLE COMPTE_RENDU_VISITE
    (
     ID_VISITE INTEGER  NOT NULL,
     ID_COLLA INTEGER  NOT NULL,
-    DATE_VISITE DATE  NULL
+    DATE_VISITE DATE  NULL,
+    COÛT_VISITE VARCHAR(60)  NULL
 ,   CONSTRAINT PK_COMPTE_RENDU_VISITE PRIMARY KEY (ID_VISITE)  
    ) ;
 
 -- -----------------------------------------------------------------------------
+
 --       INDEX DE LA TABLE COMPTE_RENDU_VISITE
+
 -- -----------------------------------------------------------------------------
 
 CREATE  INDEX I_FK_COMPTE_RENDU_VISITE_COLLA
@@ -77,7 +88,9 @@ CREATE  INDEX I_FK_COMPTE_RENDU_VISITE_COLLA
     ;
 
 -- -----------------------------------------------------------------------------
+
 --       TABLE : VISITEUR
+
 -- -----------------------------------------------------------------------------
 
 CREATE TABLE VISITEUR
@@ -85,7 +98,8 @@ CREATE TABLE VISITEUR
     ID_VIS INTEGER  NOT NULL,
     ID_COLLA INTEGER  NOT NULL,
     LIBELLE VARCHAR(60)  NULL,
-    BUDGET_VIS SINGLE  NULL,
+    PRIME_VIS VARCHAR(60)  NULL,
+    BUDGET_VIS VARCHAR(60)  NULL,
     NOM_COLLA VARCHAR(60)  NULL,
     PRENOM_COLLA VARCHAR(60)  NULL,
     VILLE_COLLA VARCHAR(60)  NULL,
@@ -95,10 +109,12 @@ CREATE TABLE VISITEUR
     LOGIN VARCHAR(60)  NULL,
     ID_RÔLE INTEGER  NULL
 ,   CONSTRAINT PK_VISITEUR PRIMARY KEY (ID_VIS)  
-   ) ;
+  ) ;
 
 -- -----------------------------------------------------------------------------
+
 --       INDEX DE LA TABLE VISITEUR
+
 -- -----------------------------------------------------------------------------
 
 CREATE  INDEX I_FK_VISITEUR_COLLABORATEUR
@@ -106,20 +122,23 @@ CREATE  INDEX I_FK_VISITEUR_COLLABORATEUR
     ;
 
 -- -----------------------------------------------------------------------------
+
 --       TABLE : MÉDICAMENT
+
 -- -----------------------------------------------------------------------------
 
 CREATE TABLE MÉDICAMENT
    (
     ID_MEDICAMENT INTEGER  NOT NULL,
     NOM_MEDICAMENT VARCHAR(60)  NULL,
-    NB_MEDICAMENT INTEGER  NULL,
-    COÛT_MÉDICAMENT SINGLE  NULL
+    NB_MEDICAMENT INTEGER  NULL
 ,   CONSTRAINT PK_MÉDICAMENT PRIMARY KEY (ID_MEDICAMENT)  
    ) ;
 
 -- -----------------------------------------------------------------------------
+
 --       TABLE : MÉDECIN
+
 -- -----------------------------------------------------------------------------
 
 CREATE TABLE MÉDECIN
@@ -136,7 +155,7 @@ CREATE TABLE MÉDECIN
    ) ;
 
 COMMENT ON COLUMN MÉDECIN.NOM_MEDECIN
-     IS 'Nom du médecin';
+    IS 'Nom du médecin';
 
 COMMENT ON COLUMN MÉDECIN.PRENOM_MEDECIN
      IS 'Prenom du médecin';
@@ -148,18 +167,23 @@ COMMENT ON COLUMN MÉDECIN.CP_MEDECIN
      IS 'Code Postal du médecin';
 
 COMMENT ON COLUMN MÉDECIN.COEFPRE_MEDECIN
-     IS 'Coefficient de prescription du médecin';
+    IS 'Coefficient de prescription du médecin';
 
 -- -----------------------------------------------------------------------------
+
 --       INDEX DE LA TABLE MÉDECIN
+
 -- -----------------------------------------------------------------------------
 
 CREATE  INDEX I_FK_MÉDECIN_COMPTE_RENDU_VISI
+
      ON MÉDECIN (ID_VISITE ASC)
     ;
 
 -- -----------------------------------------------------------------------------
+
 --       TABLE : DÉLÉGUÉ_RÉGIONAL
+
 -- -----------------------------------------------------------------------------
 
 CREATE TABLE DÉLÉGUÉ_RÉGIONAL
@@ -180,7 +204,9 @@ CREATE TABLE DÉLÉGUÉ_RÉGIONAL
    ) ;
 
 -- -----------------------------------------------------------------------------
+
 --       INDEX DE LA TABLE DÉLÉGUÉ_RÉGIONAL
+
 -- -----------------------------------------------------------------------------
 
 CREATE  INDEX I_FK_DÉLÉGUÉ_RÉGIONAL_COLLABOR
@@ -188,7 +214,9 @@ CREATE  INDEX I_FK_DÉLÉGUÉ_RÉGIONAL_COLLABOR
     ;
 
 -- -----------------------------------------------------------------------------
+
 --       TABLE : COLLABORATEUR
+
 -- -----------------------------------------------------------------------------
 
 CREATE TABLE COLLABORATEUR
@@ -206,11 +234,15 @@ CREATE TABLE COLLABORATEUR
    ) ;
 
 -- -----------------------------------------------------------------------------
+
 --       TABLE : RESPONSABLE_SECTEUR
+
 -- -----------------------------------------------------------------------------
 
 CREATE TABLE RESPONSABLE_SECTEUR
+
    (
+
     ID_RESP INTEGER  NOT NULL,
     ID_COLLA INTEGER  NOT NULL,
     LIBELLE VARCHAR(60)  NULL,
@@ -229,7 +261,9 @@ CREATE TABLE RESPONSABLE_SECTEUR
    ) ;
 
 -- -----------------------------------------------------------------------------
+
 --       INDEX DE LA TABLE RESPONSABLE_SECTEUR
+
 -- -----------------------------------------------------------------------------
 
 CREATE  INDEX I_FK_RESPONSABLE_SECTEUR_COLLA
@@ -237,7 +271,9 @@ CREATE  INDEX I_FK_RESPONSABLE_SECTEUR_COLLA
     ;
 
 -- -----------------------------------------------------------------------------
+
 --       TABLE : DÉPEND_DE
+
 -- -----------------------------------------------------------------------------
 
 CREATE TABLE DÉPEND_DE
@@ -248,19 +284,21 @@ CREATE TABLE DÉPEND_DE
    ) ;
 
 -- -----------------------------------------------------------------------------
+
 --       INDEX DE LA TABLE DÉPEND_DE
+
 -- -----------------------------------------------------------------------------
 
 CREATE  INDEX I_FK_DÉPEND_DE_VISITEUR
-     ON DÉPEND_DE (ID_VIS ASC)
-    ;
+     ON DÉPEND_DE (ID_VIS ASC);
 
 CREATE  INDEX I_FK_DÉPEND_DE_RÉUNION
-     ON DÉPEND_DE (ID_RÉUNION ASC)
-    ;
+     ON DÉPEND_DE (ID_RÉUNION ASC);
 
 -- -----------------------------------------------------------------------------
+
 --       TABLE : OFFRIR
+
 -- -----------------------------------------------------------------------------
 
 CREATE TABLE OFFRIR
@@ -272,7 +310,9 @@ CREATE TABLE OFFRIR
    ) ;
 
 -- -----------------------------------------------------------------------------
+
 --       INDEX DE LA TABLE OFFRIR
+
 -- -----------------------------------------------------------------------------
 
 CREATE  INDEX I_FK_OFFRIR_COMPTE_RENDU_VISIT
@@ -285,7 +325,9 @@ CREATE  INDEX I_FK_OFFRIR_MÉDICAMENT
 
 
 -- -----------------------------------------------------------------------------
+
 --       CREATION DES REFERENCES DE TABLE
+
 -- -----------------------------------------------------------------------------
 
 
@@ -299,40 +341,49 @@ ALTER TABLE COMPTE_RENDU_VISITE ADD (
           FOREIGN KEY (ID_COLLA)
                REFERENCES COLLABORATEUR (ID_COLLA))   ;
 
+
 ALTER TABLE VISITEUR ADD (
      CONSTRAINT FK_VISITEUR_COLLABORATEUR
           FOREIGN KEY (ID_COLLA)
                REFERENCES COLLABORATEUR (ID_COLLA))   ;
 
+
 ALTER TABLE MÉDECIN ADD (
      CONSTRAINT FK_MÉDECIN_COMPTE_RENDU_VISITE
-          FOREIGN KEY (ID_VISITE)
+         FOREIGN KEY (ID_VISITE)
                REFERENCES COMPTE_RENDU_VISITE (ID_VISITE))   ;
+
 
 ALTER TABLE DÉLÉGUÉ_RÉGIONAL ADD (
      CONSTRAINT FK_DÉLÉGUÉ_RÉGIONAL_COLLABORAT
           FOREIGN KEY (ID_COLLA)
                REFERENCES COLLABORATEUR (ID_COLLA))   ;
 
+
+
 ALTER TABLE RESPONSABLE_SECTEUR ADD (
      CONSTRAINT FK_RESPONSABLE_SECTEUR_COLLABO
           FOREIGN KEY (ID_COLLA)
                REFERENCES COLLABORATEUR (ID_COLLA))   ;
+
 
 ALTER TABLE DÉPEND_DE ADD (
      CONSTRAINT FK_DÉPEND_DE_VISITEUR
           FOREIGN KEY (ID_VIS)
                REFERENCES VISITEUR (ID_VIS))   ;
 
+
 ALTER TABLE DÉPEND_DE ADD (
      CONSTRAINT FK_DÉPEND_DE_RÉUNION
           FOREIGN KEY (ID_RÉUNION)
                REFERENCES RÉUNION (ID_RÉUNION))   ;
 
+
 ALTER TABLE OFFRIR ADD (
      CONSTRAINT FK_OFFRIR_COMPTE_RENDU_VISITE
           FOREIGN KEY (ID_VISITE)
                REFERENCES COMPTE_RENDU_VISITE (ID_VISITE))   ;
+
 
 ALTER TABLE OFFRIR ADD (
      CONSTRAINT FK_OFFRIR_MÉDICAMENT
@@ -341,5 +392,7 @@ ALTER TABLE OFFRIR ADD (
 
 
 -- -----------------------------------------------------------------------------
+
 --                FIN DE GENERATION
+
 -- -----------------------------------------------------------------------------
