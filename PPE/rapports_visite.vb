@@ -14,6 +14,8 @@
     Private Sub Label2_Click(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
 
 
+
+
         'connString = "Driver={Microsoft ODBC for Oracle};CONNECTSTRING=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.0.23.80)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=ORCL)));Uid=MESGUEN3;Pwd=Estran;"
         'SERVEUR DE TEST
         'connString = "Driver={Microsoft ODBC for Oracle};CONNECTSTRING=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.0.220.100)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=ORAPROF)));Uid=SCOTT;Pwd=tiger;"
