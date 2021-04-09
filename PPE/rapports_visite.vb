@@ -103,6 +103,11 @@
 
     End Sub
 
+    Private Sub info_medicament_TextChanged(sender As Object, e As EventArgs) Handles info_medicament.TextChanged
 
+    End Sub
 
+    Private Sub nom_echantillons_Click(sender As Object, e As EventArgs) Handles nom_echantillons.Click
+
+    End Sub
 End Class

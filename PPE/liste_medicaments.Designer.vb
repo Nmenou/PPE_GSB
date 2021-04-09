@@ -28,19 +28,21 @@ Partial Class liste_medicaments
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(85, 120)
+        Me.Label1.Location = New System.Drawing.Point(165, 49)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(114, 13)
+        Me.Label1.Size = New System.Drawing.Size(232, 25)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Liste des médicaments"
         '
-        'Form3
+        'liste_medicaments
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(284, 261)
+        Me.ClientSize = New System.Drawing.Size(568, 502)
         Me.Controls.Add(Me.Label1)
-        Me.Name = "Form3"
+        Me.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.Name = "liste_medicaments"
         Me.Text = "Form3"
         Me.ResumeLayout(False)
         Me.PerformLayout()
