@@ -1,79 +1,38 @@
-﻿Public Class rapports_visite
+﻿Imports System.Data.Odbc
 
+Public Class rapports_visite
 
-
-  
-    'Text principal
-
-    Private Sub Label2_Click(sender As System.Object, e As System.EventArgs) Handles label_visite.Click
-
-    End Sub
-
-    
-
-
-    ' Text echanntillon données
-
-    Private Sub label_echantillon_Click(sender As System.Object, e As System.EventArgs) Handles label_echantillon.Click
-
-    End Sub
-
-
+    Dim myCommand As New System.Data.Odbc.OdbcCommand
+    Dim myReader As System.Data.Odbc.OdbcDataReader
+    Dim myAdapter As System.Data.Odbc.OdbcDataAdapter
+    Dim myBuilder As System.Data.Odbc.OdbcCommandBuilder
+    Dim donnee As DataTable
 
     ' checkbox oui
 
-    Private Sub check_oui_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles check_oui.CheckedChanged
+    Private Sub check_oui_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles check_oui.CheckedChanged
+        check_non.Checked = False
 
+        LabelInvisible.Text = "Oui"
     End Sub
 
 
     ' checkbox non
 
-    Private Sub check_non_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles check_non.CheckedChanged
+    Private Sub check_non_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles check_non.CheckedChanged
+        check_oui.Checked = False
 
+        LabelInvisible.Text = "Non"
     End Sub
 
+    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
 
+        Dim query As String = "INSERT INTO MEDECIN(ID_VISITE,NOM_MEDECIN,PRENOM_MEDECIN,INFOPERSO_MEDECIN,ECHANTDON) VALUES(1,'" & nom_visiteur.Text & "','" & prenom_visiteur.Text & "','" & info_medecin.Text & "','" & LabelInvisible.Text & "');"
+        myCommand.Connection = Connexion.myConnection
+        myCommand.CommandText = query
 
-    ' Le texte nom du visiteur médical
-    Private Sub label_nom_visiteur_Click(sender As System.Object, e As System.EventArgs) Handles label_nom_visiteur.Click
-
+        myReader = myCommand.ExecuteReader
+        MessageBox.Show("Succès de l'opération")
+        Me.Hide()
     End Sub
-
-
-
-    'Le nom et prénom du visiteur médical
-    Private Sub nom_visiteur_TextChanged(sender As System.Object, e As System.EventArgs) Handles nom_visiteur.TextChanged
-
-    End Sub
-
-
-    'Le texte prenom du visiteur médical
-
-    Private Sub label_prenom_visiteur_Click_1(sender As System.Object, e As System.EventArgs) Handles label_prenom_visiteur.Click
-
-    End Sub
-
-
-    ' le prénom du visiteur médical
-    Private Sub prenom_visiteur_TextChanged(sender As System.Object, e As System.EventArgs) Handles prenom_visiteur.TextChanged
-
-    End Sub
-
-
-
-    ' Le label informations sur le médecins
-    Private Sub label_info_Click(sender As System.Object, e As System.EventArgs) Handles label_info.Click
-
-    End Sub
-
-
-
-    ' Les informations sur le médecins
-    Private Sub info_medecin_TextChanged(sender As System.Object, e As System.EventArgs) Handles info_medecin.TextChanged
-
-    End Sub
-
-
-
 End Class

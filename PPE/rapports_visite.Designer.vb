@@ -32,6 +32,8 @@ Partial Class rapports_visite
         Me.label_prenom_visiteur = New System.Windows.Forms.Label()
         Me.prenom_visiteur = New System.Windows.Forms.TextBox()
         Me.info_medecin = New System.Windows.Forms.TextBox()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.LabelInvisible = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'label_echantillon
@@ -120,11 +122,32 @@ Partial Class rapports_visite
         Me.info_medecin.Size = New System.Drawing.Size(147, 20)
         Me.info_medecin.TabIndex = 9
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(156, 271)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 10
+        Me.Button1.Text = "Valider"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'LabelInvisible
+        '
+        Me.LabelInvisible.AutoSize = True
+        Me.LabelInvisible.ForeColor = System.Drawing.Color.Transparent
+        Me.LabelInvisible.Location = New System.Drawing.Point(399, 326)
+        Me.LabelInvisible.Name = "LabelInvisible"
+        Me.LabelInvisible.Size = New System.Drawing.Size(29, 13)
+        Me.LabelInvisible.TabIndex = 11
+        Me.LabelInvisible.Text = "Rien"
+        '
         'rapports_visite
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(431, 335)
+        Me.Controls.Add(Me.LabelInvisible)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.info_medecin)
         Me.Controls.Add(Me.prenom_visiteur)
         Me.Controls.Add(Me.label_prenom_visiteur)
@@ -151,4 +174,6 @@ Partial Class rapports_visite
     Friend WithEvents label_prenom_visiteur As System.Windows.Forms.Label
     Friend WithEvents prenom_visiteur As System.Windows.Forms.TextBox
     Friend WithEvents info_medecin As System.Windows.Forms.TextBox
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents LabelInvisible As System.Windows.Forms.Label
 End Class

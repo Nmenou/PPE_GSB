@@ -72,11 +72,23 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connexion.Designer.vb">
+      <DependentUpon>Connexion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Connexion.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="index.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="index.Designer.vb">
       <DependentUpon>index.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inscription.Designer.vb">
+      <DependentUpon>Inscription.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Inscription.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="rapports_visite.Designer.vb">
@@ -108,8 +120,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Connexion.resx">
+      <DependentUpon>Connexion.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="index.resx">
       <DependentUpon>index.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inscription.resx">
+      <DependentUpon>Inscription.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="rapports_visite.resx">
       <DependentUpon>rapports_visite.vb</DependentUpon>
