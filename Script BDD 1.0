@@ -9,23 +9,23 @@
 --      Date de dernière modification : 11/12/2020 10:53:40
 -- -----------------------------------------------------------------------------
 
-DROP TABLE RÉUNION CASCADE CONSTRAINTS;
+DROP TABLE REUNION CASCADE CONSTRAINTS;
 
 DROP TABLE COMPTE_RENDU_VISITE CASCADE CONSTRAINTS;
 
 DROP TABLE VISITEUR CASCADE CONSTRAINTS;
 
-DROP TABLE MÉDICAMENT CASCADE CONSTRAINTS;
+DROP TABLE MEDICAMENT CASCADE CONSTRAINTS;
 
-DROP TABLE MÉDECIN CASCADE CONSTRAINTS;
+DROP TABLE MEDECIN CASCADE CONSTRAINTS;
 
-DROP TABLE DÉLÉGUÉ_RÉGIONAL CASCADE CONSTRAINTS;
+DROP TABLE DELEGUE_REGIONAL CASCADE CONSTRAINTS;
 
 DROP TABLE COLLABORATEUR CASCADE CONSTRAINTS;
 
 DROP TABLE RESPONSABLE_SECTEUR CASCADE CONSTRAINTS;
 
-DROP TABLE DÉPEND_DE CASCADE CONSTRAINTS;
+DROP TABLE DEPEND_DE CASCADE CONSTRAINTS;
 
 DROP TABLE OFFRIR CASCADE CONSTRAINTS;
 
@@ -39,27 +39,27 @@ CREATE DATABASE MLR1;
 
 -- -----------------------------------------------------------------------------
 
---       TABLE : RÉUNION
+--       TABLE : REUNION
 
 -- -----------------------------------------------------------------------------
 
-CREATE TABLE RÉUNION
+CREATE TABLE REUNION
    (
-    ID_RÉUNION INTEGER  NOT NULL,
+    ID_REUNION INTEGER  NOT NULL,
     ID_DEL INTEGER  NOT NULL,
-    PBRENCONTRÉS_RÉUNION VARCHAR(255)  NULL,
+    PBRENCONTRES_REUNION VARCHAR(255)  NULL,
     BILAN_MENSUEL VARCHAR(255)  NULL 
-,   CONSTRAINT PK_RÉUNION PRIMARY KEY (ID_RÉUNION)  
+,   CONSTRAINT PK_REUNION PRIMARY KEY (ID_REUNION)  
    ) ;
 
 -- -----------------------------------------------------------------------------
 
---       INDEX DE LA TABLE RÉUNION
+--       INDEX DE LA TABLE REUNION
 
 -- -----------------------------------------------------------------------------
 
-CREATE  INDEX I_FK_RÉUNION_DÉLÉGUÉ_RÉGIONAL
-     ON RÉUNION (ID_DEL ASC)
+CREATE  INDEX I_FK_REUNION_DELEGUE_REGIONAL
+     ON REUNION (ID_DEL ASC)
     ;
 
 -- -----------------------------------------------------------------------------
@@ -73,7 +73,7 @@ CREATE TABLE COMPTE_RENDU_VISITE
     ID_VISITE INTEGER  NOT NULL,
     ID_COLLA INTEGER  NOT NULL,
     DATE_VISITE DATE  NULL,
-    COÛT_VISITE VARCHAR(60)  NULL
+    COUT_VISITE VARCHAR(60)  NULL
 ,   CONSTRAINT PK_COMPTE_RENDU_VISITE PRIMARY KEY (ID_VISITE)  
    ) ;
 
@@ -107,7 +107,7 @@ CREATE TABLE VISITEUR
     PRIME_COLLA float(5)  NULL,
     MOT_DE_PASSE VARCHAR(60)  NULL,
     LOGIN VARCHAR(60)  NULL,
-    ID_RÔLE INTEGER  NULL
+    ID_ROLE INTEGER  NULL
 ,   CONSTRAINT PK_VISITEUR PRIMARY KEY (ID_VIS)  
   ) ;
 
@@ -123,25 +123,25 @@ CREATE  INDEX I_FK_VISITEUR_COLLABORATEUR
 
 -- -----------------------------------------------------------------------------
 
---       TABLE : MÉDICAMENT
+--       TABLE : MEDICAMENT
 
 -- -----------------------------------------------------------------------------
 
-CREATE TABLE MÉDICAMENT
+CREATE TABLE MEDICAMENT
    (
     ID_MEDICAMENT INTEGER  NOT NULL,
     NOM_MEDICAMENT VARCHAR(60)  NULL,
     NB_MEDICAMENT INTEGER  NULL
-,   CONSTRAINT PK_MÉDICAMENT PRIMARY KEY (ID_MEDICAMENT)  
+,   CONSTRAINT PK_MEDICAMENT PRIMARY KEY (ID_MEDICAMENT)  
    ) ;
 
 -- -----------------------------------------------------------------------------
 
---       TABLE : MÉDECIN
+--       TABLE : MEDECIN
 
 -- -----------------------------------------------------------------------------
 
-CREATE TABLE MÉDECIN
+CREATE TABLE MEDECIN
    (
     ID_MEDECIN INTEGER  NOT NULL,
     ID_VISITE INTEGER  NOT NULL,
@@ -151,47 +151,47 @@ CREATE TABLE MÉDECIN
     CP_MEDECIN VARCHAR(5)  NULL,
     COEFPRE_MEDECIN INTEGER  NULL,
     INFOPERSO_MEDECIN VARCHAR(255)  NULL
-,   CONSTRAINT PK_MÉDECIN PRIMARY KEY (ID_MEDECIN)  
+,   CONSTRAINT PK_MEDECIN PRIMARY KEY (ID_MEDECIN)  
    ) ;
 
-COMMENT ON COLUMN MÉDECIN.NOM_MEDECIN
-    IS 'Nom du médecin';
+COMMENT ON COLUMN MEDECIN.NOM_MEDECIN
+    IS 'Nom du mEdecin';
 
-COMMENT ON COLUMN MÉDECIN.PRENOM_MEDECIN
-     IS 'Prenom du médecin';
+COMMENT ON COLUMN MEDECIN.PRENOM_MEDECIN
+     IS 'Prenom du mEdecin';
 
-COMMENT ON COLUMN MÉDECIN.VILLE_MEDECIN
-     IS 'Ville où est le médecin';
+COMMENT ON COLUMN MEDECIN.VILLE_MEDECIN
+     IS 'Ville où est le mEdecin';
 
-COMMENT ON COLUMN MÉDECIN.CP_MEDECIN
-     IS 'Code Postal du médecin';
+COMMENT ON COLUMN MEDECIN.CP_MEDECIN
+     IS 'Code Postal du mEdecin';
 
-COMMENT ON COLUMN MÉDECIN.COEFPRE_MEDECIN
-    IS 'Coefficient de prescription du médecin';
-
--- -----------------------------------------------------------------------------
-
---       INDEX DE LA TABLE MÉDECIN
+COMMENT ON COLUMN MEDECIN.COEFPRE_MEDECIN
+    IS 'Coefficient de prescription du mEdecin';
 
 -- -----------------------------------------------------------------------------
 
-CREATE  INDEX I_FK_MÉDECIN_COMPTE_RENDU_VISI
+--       INDEX DE LA TABLE MEDECIN
 
-     ON MÉDECIN (ID_VISITE ASC)
+-- -----------------------------------------------------------------------------
+
+CREATE  INDEX I_FK_MEDECIN_COMPTE_RENDU_VISI
+
+     ON MEDECIN (ID_VISITE ASC)
     ;
 
 -- -----------------------------------------------------------------------------
 
---       TABLE : DÉLÉGUÉ_RÉGIONAL
+--       TABLE : DELEGUE_REGIONAL
 
 -- -----------------------------------------------------------------------------
 
-CREATE TABLE DÉLÉGUÉ_RÉGIONAL
+CREATE TABLE DELEGUE_REGIONAL
    (
     ID_DEL INTEGER  NOT NULL,
     ID_COLLA INTEGER  NOT NULL,
     LIBELLE VARCHAR(60)  NULL,
-    RÉGION VARCHAR(60)  NULL,
+    REGION VARCHAR(60)  NULL,
     NOM_COLLA VARCHAR(60)  NULL,
     PRENOM_COLLA VARCHAR(60)  NULL,
     VILLE_COLLA VARCHAR(60)  NULL,
@@ -199,18 +199,18 @@ CREATE TABLE DÉLÉGUÉ_RÉGIONAL
     PRIME_COLLA float(5)  NULL,
     MOT_DE_PASSE VARCHAR(60)  NULL,
     LOGIN VARCHAR(60)  NULL,
-    ID_RÔLE INTEGER  NULL
-,   CONSTRAINT PK_DÉLÉGUÉ_RÉGIONAL PRIMARY KEY (ID_DEL)  
+    ID_ROLE INTEGER  NULL
+,   CONSTRAINT PK_DELEGUE_REGIONAL PRIMARY KEY (ID_DEL)  
    ) ;
 
 -- -----------------------------------------------------------------------------
 
---       INDEX DE LA TABLE DÉLÉGUÉ_RÉGIONAL
+--       INDEX DE LA TABLE DELEGUE_REGIONAL
 
 -- -----------------------------------------------------------------------------
 
-CREATE  INDEX I_FK_DÉLÉGUÉ_RÉGIONAL_COLLABOR
-     ON DÉLÉGUÉ_RÉGIONAL (ID_COLLA ASC)
+CREATE  INDEX I_FK_DELEGUE_REGIONAL_COLLABOR
+     ON DELEGUE_REGIONAL (ID_COLLA ASC)
     ;
 
 -- -----------------------------------------------------------------------------
@@ -229,7 +229,7 @@ CREATE TABLE COLLABORATEUR
     PRIME_COLLA float(5)  NULL,
     MOT_DE_PASSE VARCHAR(60)  NULL,
     LOGIN VARCHAR(60)  NULL,
-    ID_RÔLE INTEGER  NULL
+    ID_ROLE INTEGER  NULL
 ,   CONSTRAINT PK_COLLABORATEUR PRIMARY KEY (ID_COLLA)  
    ) ;
 
@@ -256,7 +256,7 @@ CREATE TABLE RESPONSABLE_SECTEUR
     PRIME_COLLA float(5)  NULL,
     MOT_DE_PASSE VARCHAR(60)  NULL,
     LOGIN VARCHAR(60)  NULL,
-    ID_RÔLE INTEGER  NULL
+    ID_ROLE INTEGER  NULL
 ,   CONSTRAINT PK_RESPONSABLE_SECTEUR PRIMARY KEY (ID_RESP)  
    ) ;
 
@@ -272,28 +272,28 @@ CREATE  INDEX I_FK_RESPONSABLE_SECTEUR_COLLA
 
 -- -----------------------------------------------------------------------------
 
---       TABLE : DÉPEND_DE
+--       TABLE : DEPEND_DE
 
 -- -----------------------------------------------------------------------------
 
-CREATE TABLE DÉPEND_DE
+CREATE TABLE DEPEND_DE
    (
     ID_VIS INTEGER  NOT NULL,
-    ID_RÉUNION INTEGER  NOT NULL
-,   CONSTRAINT PK_DÉPEND_DE PRIMARY KEY (ID_VIS, ID_RÉUNION)  
+    ID_REUNION INTEGER  NOT NULL
+,   CONSTRAINT PK_DEPEND_DE PRIMARY KEY (ID_VIS, ID_REUNION)  
    ) ;
 
 -- -----------------------------------------------------------------------------
 
---       INDEX DE LA TABLE DÉPEND_DE
+--       INDEX DE LA TABLE DEPEND_DE
 
 -- -----------------------------------------------------------------------------
 
-CREATE  INDEX I_FK_DÉPEND_DE_VISITEUR
-     ON DÉPEND_DE (ID_VIS ASC);
+CREATE  INDEX I_FK_DEPEND_DE_VISITEUR
+     ON DEPEND_DE (ID_VIS ASC);
 
-CREATE  INDEX I_FK_DÉPEND_DE_RÉUNION
-     ON DÉPEND_DE (ID_RÉUNION ASC);
+CREATE  INDEX I_FK_DEPEND_DE_REUNION
+     ON DEPEND_DE (ID_REUNION ASC);
 
 -- -----------------------------------------------------------------------------
 
@@ -305,7 +305,7 @@ CREATE TABLE OFFRIR
    (
     ID_VISITE INTEGER  NOT NULL,
     ID_MEDICAMENT INTEGER  NOT NULL,
-    QUANTITÉ INTEGER  NULL
+    QUANTITE INTEGER  NULL
 ,   CONSTRAINT PK_OFFRIR PRIMARY KEY (ID_VISITE, ID_MEDICAMENT)  
    ) ;
 
@@ -319,7 +319,7 @@ CREATE  INDEX I_FK_OFFRIR_COMPTE_RENDU_VISIT
      ON OFFRIR (ID_VISITE ASC)
     ;
 
-CREATE  INDEX I_FK_OFFRIR_MÉDICAMENT
+CREATE  INDEX I_FK_OFFRIR_MEDICAMENT
      ON OFFRIR (ID_MEDICAMENT ASC)
     ;
 
@@ -331,10 +331,10 @@ CREATE  INDEX I_FK_OFFRIR_MÉDICAMENT
 -- -----------------------------------------------------------------------------
 
 
-ALTER TABLE RÉUNION ADD (
-     CONSTRAINT FK_RÉUNION_DÉLÉGUÉ_RÉGIONAL
+ALTER TABLE REUNION ADD (
+     CONSTRAINT FK_REUNION_DELEGUE_REGIONAL
           FOREIGN KEY (ID_DEL)
-               REFERENCES DÉLÉGUÉ_RÉGIONAL (ID_DEL))   ;
+               REFERENCES DELEGUE_REGIONAL (ID_DEL))   ;
 
 ALTER TABLE COMPTE_RENDU_VISITE ADD (
      CONSTRAINT FK_COMPTE_RENDU_VISITE_COLLABO
@@ -348,14 +348,14 @@ ALTER TABLE VISITEUR ADD (
                REFERENCES COLLABORATEUR (ID_COLLA))   ;
 
 
-ALTER TABLE MÉDECIN ADD (
-     CONSTRAINT FK_MÉDECIN_COMPTE_RENDU_VISITE
+ALTER TABLE MEDECIN ADD (
+     CONSTRAINT FK_MEDECIN_COMPTE_RENDU_VISITE
          FOREIGN KEY (ID_VISITE)
                REFERENCES COMPTE_RENDU_VISITE (ID_VISITE))   ;
 
 
-ALTER TABLE DÉLÉGUÉ_RÉGIONAL ADD (
-     CONSTRAINT FK_DÉLÉGUÉ_RÉGIONAL_COLLABORAT
+ALTER TABLE DELEGUE_REGIONAL ADD (
+     CONSTRAINT FK_DELEGUE_REGIONAL_COLLABORAT
           FOREIGN KEY (ID_COLLA)
                REFERENCES COLLABORATEUR (ID_COLLA))   ;
 
@@ -367,16 +367,16 @@ ALTER TABLE RESPONSABLE_SECTEUR ADD (
                REFERENCES COLLABORATEUR (ID_COLLA))   ;
 
 
-ALTER TABLE DÉPEND_DE ADD (
-     CONSTRAINT FK_DÉPEND_DE_VISITEUR
+ALTER TABLE DEPEND_DE ADD (
+     CONSTRAINT FK_DEPEND_DE_VISITEUR
           FOREIGN KEY (ID_VIS)
                REFERENCES VISITEUR (ID_VIS))   ;
 
 
-ALTER TABLE DÉPEND_DE ADD (
-     CONSTRAINT FK_DÉPEND_DE_RÉUNION
-          FOREIGN KEY (ID_RÉUNION)
-               REFERENCES RÉUNION (ID_RÉUNION))   ;
+ALTER TABLE DEPEND_DE ADD (
+     CONSTRAINT FK_DEPEND_DE_REUNION
+          FOREIGN KEY (ID_REUNION)
+               REFERENCES REUNION (ID_REUNION))   ;
 
 
 ALTER TABLE OFFRIR ADD (
@@ -386,9 +386,9 @@ ALTER TABLE OFFRIR ADD (
 
 
 ALTER TABLE OFFRIR ADD (
-     CONSTRAINT FK_OFFRIR_MÉDICAMENT
+     CONSTRAINT FK_OFFRIR_MEDICAMENT
           FOREIGN KEY (ID_MEDICAMENT)
-               REFERENCES MÉDICAMENT (ID_MEDICAMENT))   ;
+               REFERENCES MEDICAMENT (ID_MEDICAMENT))   ;
 
 
 -- -----------------------------------------------------------------------------
