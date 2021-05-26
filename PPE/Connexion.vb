@@ -5,7 +5,7 @@
     Dim myAdapter As System.Data.Odbc.OdbcDataAdapter
     Dim myBuilder As System.Data.Odbc.OdbcCommandBuilder
     Dim donnee As DataTable
-    Dim connString As String = "DSN=CNXORA14;Uid=system;Pwd=estran;"
+    Dim connString As String = "DSN=test10;Uid=scott;Pwd=tiger;"
 
     Private Sub C_Load() Handles Me.Load
         myConnection.ConnectionString = connString
